@@ -1,0 +1,10 @@
+.logoLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100%; */
+}
+.logo {
+  height: 5.2rem;
+  color: #121212;
+}

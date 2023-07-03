@@ -1,0 +1,8 @@
+.app {
+  height: 100vh;
+  /* padding: 2.4rem; */
+  /* background-color: #121212; */
+  /* overscroll-behavior-y: none; */
+  display: flex;
+  position: relative;
+}
