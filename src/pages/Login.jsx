@@ -6,7 +6,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
 export default function Login() {
-  // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState("harley@example.com");
   const [password, setPassword] = useState("luxury");
   const navigate = useNavigate();
