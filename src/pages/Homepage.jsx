@@ -6,9 +6,9 @@ import { useAuth } from "../contexts/AuthContext";
 export default function Homepage() {
   const { currentUser } = useAuth();
   return (
-    <header>
+    <header className={styles.showcase}>
       <PageNav />
-      <section className={styles.showcase}>
+      <div className={styles.hero}>
         <h1 className={styles.showcaseTitle}>
           Discover. Track. Delight. <br /> EatroVion keeps chart of your
           flavorful Odyssey.
@@ -25,7 +25,7 @@ export default function Homepage() {
         >
           start tracking now
         </Link>
-      </section>
+      </div>
     </header>
   );
 }

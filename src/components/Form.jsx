@@ -28,6 +28,7 @@ function Form() {
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState();
+  const [summary, setSummary] = useState();
 
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
@@ -92,6 +93,14 @@ function Form() {
         />
       </div>
 
+      <div className={styles.row}>
+        <label htmlFor="summary">Summary {summary}</label>
+        <textarea
+          id="summary"
+          onChange={(e) => setSummary(e.target.value)}
+          value={notes}
+        />
+      </div>
       <div className={styles.row}>
         <label htmlFor="notes">Notes about your trip to {cityName}</label>
         <textarea

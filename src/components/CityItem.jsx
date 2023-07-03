@@ -24,18 +24,27 @@ export default function CityItem({ city }) {
         >
           <img src="/hero.jpg" alt="image-1" className={styles.image} />
           <div className={styles.desc}>
-            <h3 className={styles.note}>
-              The Best restaurant I have ever seen!
-            </h3>
             <h2 className={styles.name}>
               Expensive Pizzarean, {city.cityName}
             </h2>
+            <h3 className={styles.note}>
+              The Best restaurant I have ever seen!
+            </h3>
+            <div className={styles.tags}>
+              <p className={styles.speciality}>Speciality: </p>
+              <span>Organic and heathy Fruits</span>
+            </div>
           </div>
-          <p className={styles.rating}>
-            <span>☆</span>
-            <span>4.6</span>
-          </p>
-          <time className={styles.date}>{formatDate(city.date)}</time>
+          <div className={styles.other}>
+            <p className={styles.rating}>
+              <span>4.6</span>
+              <span>Stars</span>
+            </p>
+            <p>
+              contact: <span>+88087264</span>
+            </p>
+            <time className={styles.date}>({formatDate(city.date)})</time>
+          </div>
           <button
             className={styles.deleteBtn}
             onClick={(e) => {

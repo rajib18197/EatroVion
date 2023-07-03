@@ -6,7 +6,7 @@ const BASE_URL = "http://localhost:9000";
 
 function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
-  const [currentCity, setCurrentCity] = useState(null);
+  const [currentCity, setCurrentCity] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 

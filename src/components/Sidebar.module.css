@@ -1,7 +1,7 @@
 .sidebar {
   flex: 1;
   /* background-color: var(--color-primary); */
-  background-color: rgb(255, 255, 255);
+  background-color: #f8fbfd;
   padding: 3rem 2rem 3.5rem 2rem;
 
   display: flex;

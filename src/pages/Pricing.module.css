@@ -1,6 +1,12 @@
-/* .pricing {
-  height: 100vh;
-} */
+.pricing {
+  background-color: hsl(210deg, 22%, 15%);
+  background-image: linear-gradient(
+      120deg,
+      rgba(57, 19, 194, 0.8),
+      /* rgba(223, 57, 178, 0.8) */ rgba(147, 35, 221, 0.8)
+    ),
+    url(/hero.jpg);
+}
 .pricingDesign {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
@@ -32,7 +38,7 @@
   z-index: 10;
 }
 .design-content__information {
-  background-color: #101d36;
+  background-color: hsl(210deg, 22%, 15%);
   color: #fff;
   padding: 1rem;
 }
@@ -96,7 +102,7 @@
 
 .design-text {
   /* margin: 5rem 0; */
-  background-color: #730039;
+  background-color: hsl(212, 16%, 18%);
   grid-column: 9 / -1;
   display: grid;
   /* grid-template-columns: 1fr;

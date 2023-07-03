@@ -3,9 +3,17 @@
     {
       "cityName": "Lisbon",
       "country": "Portugal",
+      "restaurantName": "Expensive Pizzarean",
+      "favouriteDishes": ["Vegan", "Fish", "Fruits"],
+      "speciality": "heathy food",
+      "contact": { "phone": 88123461, "email": "pizza.co@gmail.com" },
+      "rating": 4.6,
       "emoji": "🇵🇹",
       "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
+      "notes": {
+        "summary": "My favorite city so far!",
+        "details": "organic and heathy food"
+      },
       "position": {
         "lat": 38.727881642324164,
         "lng": -9.140900099907554
@@ -15,6 +23,11 @@
     {
       "cityName": "Madrid",
       "country": "Spain",
+      "restaurantName": "Expensive Pizzarean",
+      "favouriteDishes": ["Vegan", "Fish", "Fruits"],
+      "speciality": "heathy food",
+      "contact": { "phone": 88123461, "email": "pizza.co@gmail.com" },
+      "rating": 4.6,
       "emoji": "🇪🇸",
       "date": "2027-07-15T08:22:53.976Z",
       "notes": "",
@@ -28,6 +41,11 @@
       "cityName": "Berlin",
       "country": "Germany",
       "emoji": "🇩🇪",
+      "restaurantName": "Expensive Pizzarean",
+      "favouriteDishes": ["Vegan", "Fish", "Fruits"],
+      "speciality": "heathy food",
+      "contact": { "phone": 88123461, "email": "pizza.co@gmail.com" },
+      "rating": 4.6,
       "date": "2027-02-12T09:24:11.863Z",
       "notes": "Amazing 😃",
       "position": {
@@ -35,18 +53,6 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
-    },
-    {
-      "cityName": "Madrid",
-      "date": "2023-07-02T17:32:53.707Z",
-      "notes": "",
-      "emoji": "ES",
-      "country": "Spain",
-      "position": {
-        "lat": "40.476725355504186",
-        "lng": "-3.6998176574707036"
-      },
-      "id": 98443198
     }
   ]
 }
