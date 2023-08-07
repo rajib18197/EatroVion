@@ -29,6 +29,8 @@ function City() {
 
   if (isLoading) return <Spinner />;
 
+  if (Object.keys(currentCity).length === 0) return <Spinner />;
+
   const {
     cityName,
     emoji,
@@ -39,6 +41,7 @@ function City() {
     favouriteDishes,
     country,
     contact,
+    rating,
   } = currentCity;
 
   return (
@@ -53,11 +56,11 @@ function City() {
         <div className={styles.country}>
           {/* <h6>City name</h6> */}
           <h3>
-            16 JavaScript road, {cityName}, {country}
+            {cityName}, {country}
           </h3>
         </div>
         <div className={styles.speciality}>
-          <h3>{speciality} considered very special</h3>
+          <h3>{speciality} is their special food in my opinion.</h3>
         </div>
         <div className={styles.worldRating}>
           <h3>4.6 worldwide Rating</h3>
@@ -67,9 +70,10 @@ function City() {
       <div className={styles.rating}>
         <div className={styles.rate}>
           {/* <div> */}
-          <StarRating fontSize="16" maxRating={10} />
           {/* </div> */}
-          <p className={styles.text}>You rated this restaurant 8</p>
+          <p className={styles.text}>
+            You rated this restaurant {rating} stars
+          </p>
         </div>
       </div>
 
@@ -85,13 +89,7 @@ function City() {
         <div className={styles.notes}>
           <h6>Your notes</h6>
           <p>
-            <span>{notes.summary}</span>
-            {notes.details} Inexpensive, healthy and great-tasting meals,
-            without even having to order manually. Inexpensive, healthy and
-            great-tasting meals, without even having to order manually.
-            Inexpensive, healthy and great-tasting meals, without even having to
-            order manually. Inexpensive, healthy and great-tasting meals,
-            without even having to order manually.
+            <span>{notes}</span>
           </p>
         </div>
       )}
@@ -107,9 +105,11 @@ function City() {
           href={`https://en.wikipedia.org/wiki/${cityName}`}
           target="_blank"
           rel="noreferrer"
+          className={styles.link}
         >
-          email: {contact.email} &rarr;
+          go to url
         </a>
+        <span>email: {contact.email} &rarr;</span>
       </div>
 
       <div>

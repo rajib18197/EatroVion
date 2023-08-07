@@ -14,25 +14,6 @@
   gap: 0.5rem;
   position: relative;
 }
-.checked {
-  display: flex;
-  gap: 2rem;
-  justify-content: start;
-  align-items: center;
-}
-
-.checked input {
-  width: 2rem;
-}
-
-.checked label {
-  color: white;
-  flex: 1;
-}
-
-.row input {
-  border: 2px solid var(--color-grey-dark-3);
-}
 
 .buttons {
   display: flex;
@@ -52,8 +33,8 @@
 
 .form.loading button {
   pointer-events: none;
-  background-color: var(--color-grey-dark-3);
-  border: 1px solid var(--color-grey-dark-3);
+  background-color: var(--color-light--1);
+  border: 1px solid var(--color-light--1);
   color: var(--color-dark--0);
 }
 

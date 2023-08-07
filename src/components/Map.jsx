@@ -25,7 +25,7 @@ export default function Map() {
     },
     [lat, lng]
   );
-
+  console.log(cities);
   console.log(mapPostion);
   return (
     <div className={styles.mapContainer}>

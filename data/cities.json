@@ -3,56 +3,104 @@
     {
       "cityName": "Lisbon",
       "country": "Portugal",
-      "restaurantName": "Expensive Pizzarean",
-      "favouriteDishes": ["Vegan", "Fish", "Fruits"],
-      "speciality": "heathy food",
-      "contact": { "phone": 88123461, "email": "pizza.co@gmail.com" },
-      "rating": 4.6,
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": {
-        "summary": "My favorite city so far!",
-        "details": "organic and heathy food"
+      "emoji": "PT",
+      "restaurantName": "restaurant cassorole",
+      "expense": 400,
+      "favouriteDishes": [
+        "Pizza",
+        " Garlic",
+        " pizza"
+      ],
+      "speciality": "Garlic chicken onion",
+      "contact": {
+        "phone": 88123461,
+        "email": "pizza.co@gmail.com"
       },
+      "rating": 4.9,
+      "date": "2023-08-03T11:28:21.000Z",
+      "notes": "Amazing summer with family 😃",
       "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
+        "lat": "38.727881642324164",
+        "lng": "-9.140900099907554"
       },
-      "id": 73930385
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "restaurantName": "Expensive Pizzarean",
-      "favouriteDishes": ["Vegan", "Fish", "Fruits"],
-      "speciality": "heathy food",
-      "contact": { "phone": 88123461, "email": "pizza.co@gmail.com" },
-      "rating": 4.6,
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
-      "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
-      },
-      "id": 17806751
+      "memorable": true,
+      "id": 98443197
     },
     {
       "cityName": "Berlin",
       "country": "Germany",
-      "emoji": "🇩🇪",
-      "restaurantName": "Expensive Pizzarean",
-      "favouriteDishes": ["Vegan", "Fish", "Fruits"],
-      "speciality": "heathy food",
-      "contact": { "phone": 88123461, "email": "pizza.co@gmail.com" },
-      "rating": 4.6,
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+      "emoji": "DE",
+      "restaurantName": "davidman and burger",
+      "favouriteDishes": [
+        "Pizza Garlic Spoonacular"
+      ],
+      "speciality": "Garlic Bread",
+      "contact": {
+        "phone": 88123461,
+        "email": "pizza.co@gmail.com"
       },
-      "id": 98443197
+      "rating": 4.7,
+      "expense": 700,
+      "memorable": false,
+      "date": "2023-05-07T11:39:07.683Z",
+      "notes": "It was amazing experience I must say. Enjoy their food and hospitality.",
+      "position": {
+        "lat": "52.53586782505711",
+        "lng": "13.376933665713324"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "Madrid",
+      "country": "Spain",
+      "emoji": "ES",
+      "restaurantName": "pizza palace.co",
+      "favouriteDishes": [
+        "avocado",
+        " onions",
+        " aspargus"
+      ],
+      "speciality": "pizza and burger",
+      "contact": {
+        "phone": 88123461,
+        "email": "pizza.co@gmail.com"
+      },
+      "rating": "4.5",
+      "expense": 600,
+      "memorable": true,
+      "date": "2023-06-06T12:10:15.000Z",
+      "notes": "nice and healthy food and environment",
+      "position": {
+        "lat": "40.46635901755316",
+        "lng": "-3.7133789062500004"
+      },
+      "id": 98443199
+    },
+    {
+      "cityName": "Madrid",
+      "country": "Spain",
+      "emoji": "ES",
+      "restaurantName": "Signature Pizza crust",
+      "favouriteDishes": [
+        "oil fry",
+        " onion",
+        " cheese"
+      ],
+      "speciality": "pizza cassorole",
+      "contact": {
+        "phone": 88123461,
+        "email": "pizza.co@gmail.com"
+      },
+      "rating": "4.7",
+      "expense": 650,
+      "memorable": true,
+      "date": "2023-06-09T18:00:00.000Z",
+      "notes": "extraordinary place to go. fresh and healthy food.",
+      "position": {
+        "lat": "40.483776176266744",
+        "lng": "-3.7245368957519536"
+      },
+      "id": 98443201
     }
   ]
 }

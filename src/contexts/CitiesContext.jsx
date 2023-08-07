@@ -7,8 +7,13 @@ const BASE_URL = "http://localhost:9000";
 function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
   const [currentCity, setCurrentCity] = useState({});
+  const [cityToUpdate, setCityToUpdate] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  // const isFormUpdated = Object.keys(formData).length > 0;
+  // console.log(isFormUpdated);
+  // console.log(formData);
 
   useEffect(function () {
     async function fetchCities() {
@@ -48,10 +53,30 @@ function CitiesProvider({ children }) {
     }
   }
 
-  async function createCity(newCity) {
+  async function createUpdateCity(newCity) {
     try {
       setIsLoading(true);
       setError("");
+      if (Object.keys(cityToUpdate).length > 0) {
+        const res = await fetch(`${BASE_URL}/cities/${cityToUpdate.id}`, {
+          method: "PUT",
+          body: JSON.stringify(newCity),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        console.log(data);
+        const dataUp = cities.map((city) =>
+          city.id === data.id ? data : city
+        );
+
+        setCities(dataUp);
+        setCurrentCity(data);
+        setCityToUpdate({});
+        return;
+      }
+
       const res = await fetch(`${BASE_URL}/cities`, {
         method: "POST",
         body: JSON.stringify(newCity),
@@ -59,7 +84,6 @@ function CitiesProvider({ children }) {
           "Content-Type": "application/json",
         },
       });
-
       const data = await res.json();
       setCities((cities) => [...cities, data]);
       setCurrentCity(data);
@@ -69,6 +93,12 @@ function CitiesProvider({ children }) {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  async function updateCity(id) {
+    try {
+      setIsLoading(true);
+    } catch (err) {}
   }
 
   async function removeCity(id) {
@@ -94,10 +124,12 @@ function CitiesProvider({ children }) {
         setCities,
         currentCity,
         setCurrentCity,
+        cityToUpdate,
+        setCityToUpdate,
         getCity,
         isLoading,
         setIsLoading,
-        createCity,
+        createUpdateCity,
         removeCity,
       }}
     >

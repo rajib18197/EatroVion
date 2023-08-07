@@ -1,0 +1,7 @@
+.filters {
+  background-color: #1d1b3b;
+  padding: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+}

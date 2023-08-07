@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./CityItem.module.css";
 import { useCities } from "../contexts/CitiesContext";
+import CitiesOperations from "./CitiesOperations";
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -9,7 +10,9 @@ const formatDate = (date) =>
     weekday: "long",
   }).format(new Date(date));
 
-export default function CityItem({ city }) {
+export default function CityItem({ city, isOperationsOpen, onOperations }) {
+  // const [isOperationsOpen, setIsOperationsOpen] = useState(false);
+
   const navigate = useNavigate();
   const { currentCity, removeCity } = useCities();
 
@@ -25,35 +28,42 @@ export default function CityItem({ city }) {
           <img src="/hero.jpg" alt="image-1" className={styles.image} />
           <div className={styles.desc}>
             <h2 className={styles.name}>
-              Expensive Pizzarean, {city.cityName}
+              {city.restaurantName}, {city.cityName}
             </h2>
-            <h3 className={styles.note}>
-              The Best restaurant I have ever seen!
-            </h3>
+            <h3 className={styles.expense}>Total expenses - ${city.expense}</h3>
             <div className={styles.tags}>
               <p className={styles.speciality}>Speciality: </p>
-              <span>Organic and heathy Fruits</span>
+              <span>{city.speciality}</span>
             </div>
           </div>
           <div className={styles.other}>
             <p className={styles.rating}>
-              <span>4.6</span>
+              <span>{city.rating}</span>
               <span>Stars</span>
             </p>
             <p>
-              contact: <span>+88087264</span>
+              <span className={styles.experience}>
+                {city.memorable ? "Experience: memorable" : ""}
+              </span>
             </p>
-            <time className={styles.date}>({formatDate(city.date)})</time>
+            <time className={styles.date}>
+              Visited - ({formatDate(city.date)})
+            </time>
           </div>
-          <button
-            className={styles.deleteBtn}
-            onClick={(e) => {
-              e.preventDefault();
-              removeCity(city.id);
-            }}
-          >
-            &times;
-          </button>
+          <div className={styles.operationsPanel}>
+            <button
+              className={styles.deleteBtn}
+              onClick={(e) => {
+                e.preventDefault();
+                onOperations((id) => (id === city.id ? null : city.id));
+              }}
+            >
+              ⫶
+            </button>
+            {isOperationsOpen === city.id && (
+              <CitiesOperations city={city} removeCity={removeCity} />
+            )}
+          </div>
         </Link>
       </li>
     </ul>
