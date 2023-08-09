@@ -7,7 +7,7 @@ export default function Filters({ onFilter, filter, options }) {
       {options.map((option) => (
         <Button
           key={option.value}
-          type={filter === option.value ? "primary" : ""}
+          type={filter === option.value ? "filter" : "back"}
           onClick={() => onFilter(option.value)}
         >
           {option.label}

@@ -4,26 +4,26 @@
       "cityName": "Lisbon",
       "country": "Portugal",
       "emoji": "PT",
-      "restaurantName": "restaurant cassorole",
-      "expense": 400,
+      "restaurantName": "Redux Villa",
       "favouriteDishes": [
         "Pizza",
         " Garlic",
         " pizza"
       ],
-      "speciality": "Garlic chicken onion",
+      "speciality": "Homemade pizza Barbecue",
       "contact": {
         "phone": 88123461,
         "email": "pizza.co@gmail.com"
       },
-      "rating": 4.9,
-      "date": "2023-08-03T11:28:21.000Z",
-      "notes": "Amazing summer with family 😃",
+      "rating": "4.9",
+      "expense": 1150,
+      "memorable": true,
+      "date": "2023-07-14T18:00:00.000Z",
+      "notes": "Amazing summer with family and foods are very heathy and fresh",
       "position": {
         "lat": "38.727881642324164",
         "lng": "-9.140900099907554"
       },
-      "memorable": true,
       "id": 98443197
     },
     {

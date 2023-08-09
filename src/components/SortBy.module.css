@@ -1,7 +1,11 @@
 .sort {
-  padding: 1rem;
-  background-color: #232c2e;
-  border: 1px solid #101d48;
+  padding: 1.2rem;
+  background-color: #24213f;
+  /* border: 1px solid #24213f; */
+  border: none;
+  outline: none;
   color: white;
   border-radius: 4px;
+  font-size: 1.6rem;
+  text-transform: capitalize;
 }

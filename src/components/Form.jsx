@@ -1,10 +1,10 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 import "react-datepicker/dist/react-datepicker.css";
 
+import styles from "./Form.module.css";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 
-import styles from "./Form.module.css";
 import ButtonBack from "./ButtonBack";
 import Button from "./Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -21,18 +21,16 @@ const url = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 function Form() {
   const navigate = useNavigate();
-  // const { formData, dispatch } = useForm();
-  // const [isEditSession, setIsEditSession] = useState(
-  //   () => Object.keys(formData).length > 0
-  // );
-  const { isLoading, createUpdateCity, cityToUpdate } = useCities();
-  const isEditSession = Object.keys(cityToUpdate).length > 0;
-
   const [searchParams] = useSearchParams();
+
+  const { isLoading, createUpdateCity, cityToUpdate } = useCities();
+
+  const isUpdateSession = Boolean(cityToUpdate.id);
+
   const [cityName, setCityName] = useState("");
   const [restaurantName, setRestaurantName] = useState("");
   const [country, setCountry] = useState("");
-  const [date, setDate] = useState();
+  const [date, setDate] = useState(null);
   const [speciality, setSpeciality] = useState("");
   const [rating, setRating] = useState("");
   const [memorable, setMemorable] = useState(false);
@@ -40,19 +38,15 @@ function Form() {
   const [expense, setExpense] = useState(0);
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState();
-  const [summary, setSummary] = useState();
 
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
 
-  console.log(isEditSession);
-  // console.log(formData);
+  console.log(isUpdateSession);
 
   async function submitHandler(e) {
     e.preventDefault();
-    if (!cityName) return;
-
-    console.log(cityToUpdate.favouriteDishes, favouriteDishes);
+    if (!cityName && !isUpdateSession) return;
 
     const newCity = {
       cityName: cityName || cityToUpdate.cityName,
@@ -74,18 +68,16 @@ function Form() {
       notes: notes || cityToUpdate.notes,
       position: { lat, lng },
     };
+
     console.log(newCity);
-
-    console.log(isEditSession);
-
-    // if (isEditSession) dispatch({ type: "finishedUpdate" });
-
     await createUpdateCity(newCity);
+
     navigate("/app/cities");
   }
 
   useEffect(
     function () {
+      if (isUpdateSession) return;
       async function getCityDetails() {
         try {
           const res = await fetch(`${url}?latitude=${lat}&longitude=${lng}`);
@@ -104,6 +96,8 @@ function Form() {
     [lat, lng]
   );
 
+  console.log(cityToUpdate);
+
   return (
     <form
       className={`${styles.form} ${isLoading ? styles.loading : ""}`}
@@ -116,7 +110,7 @@ function Form() {
           onChange={(e) => {
             setCityName(e.target.value);
           }}
-          value={!cityName ? cityToUpdate.cityName : cityName}
+          defaultValue={isUpdateSession ? cityToUpdate.cityName : cityName}
         />
         <span className={styles.flag}>{emoji}</span>
       </div>
@@ -128,18 +122,24 @@ function Form() {
           onChange={(e) => {
             setRestaurantName(e.target.value);
           }}
-          value={!restaurantName ? cityToUpdate.restaurantName : restaurantName}
+          // defaultValue because if we provide just "value" property then when we write on input form then that writing words do not shows on the screen but form will be updated, but in the case of defaultvalue writing to the input form will be visible instantly as well as form update also just works fine.
+          defaultValue={
+            isUpdateSession ? cityToUpdate.restaurantName : restaurantName
+          }
         />
-        <span className={styles.flag}>{emoji}</span>
       </div>
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
+
         <DatePicker
           id="date"
-          selected={cityToUpdate.date ? new Date(cityToUpdate.date) : date}
+          selected={
+            isUpdateSession && date === null
+              ? new Date(cityToUpdate.date)
+              : date
+          }
           onChange={(date) => {
-            cityToUpdate.date = date;
             setDate(date);
           }}
         />
@@ -152,7 +152,7 @@ function Form() {
           onChange={(e) => {
             setSpeciality(e.target.value);
           }}
-          value={!speciality ? cityToUpdate.speciality : speciality}
+          defaultValue={isUpdateSession ? cityToUpdate.speciality : speciality}
         />
       </div>
 
@@ -163,11 +163,12 @@ function Form() {
           onChange={(e) => {
             setFavouriteDishes(e.target.value);
           }}
-          value={
-            !favouriteDishes ? cityToUpdate.favouriteDishes : favouriteDishes
+          defaultValue={
+            isUpdateSession ? cityToUpdate.favouriteDishes : favouriteDishes
           }
         />
       </div>
+
       <div className={styles.row}>
         <label htmlFor="rating">Your Rating</label>
         <input
@@ -175,9 +176,10 @@ function Form() {
           onChange={(e) => {
             setRating(e.target.value);
           }}
-          value={!rating ? cityToUpdate.rating : rating}
+          defaultValue={isUpdateSession ? cityToUpdate.rating : rating}
         />
       </div>
+
       <div className={styles.row}>
         <label htmlFor="expense">Total expense</label>
         <input
@@ -185,7 +187,7 @@ function Form() {
           onChange={(e) => {
             setExpense(Number(e.target.value));
           }}
-          value={!expense ? cityToUpdate.expense : expense}
+          defaultValue={isUpdateSession ? cityToUpdate.expense : expense}
         />
       </div>
 
@@ -196,7 +198,7 @@ function Form() {
           onChange={(e) => {
             setNotes(e.target.value);
           }}
-          value={!notes ? cityToUpdate.notes : notes}
+          defaultValue={isUpdateSession ? cityToUpdate.notes : notes}
         />
       </div>
 
@@ -205,13 +207,14 @@ function Form() {
           type="checkbox"
           name=""
           id="memorable"
-          checked={!memorable ? cityToUpdate.memorable : memorable}
+          defaultChecked={isUpdateSession ? cityToUpdate.memorable : memorable}
           onChange={(e) => setMemorable((memorable) => !memorable)}
         />
         <label htmlFor="memorable">Mind blowing experience</label>
       </div>
+
       <div className={styles.buttons}>
-        <Button type="primary">{isEditSession ? "Update" : "Add"}</Button>
+        <Button type="primary">{isUpdateSession ? "Update" : "Add"}</Button>
         <ButtonBack />
       </div>
     </form>

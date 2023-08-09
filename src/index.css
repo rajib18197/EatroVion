@@ -58,6 +58,7 @@ textarea {
   border: none;
   border-radius: 5px;
   background-color: var(--color-light--3);
+  border: 2px solid var(--color-grey-dark-3);
   transition: all 0.2s;
 }
 
