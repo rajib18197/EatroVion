@@ -6,13 +6,16 @@ import Spinner from "./Spinner";
 import SortBy from "./SortBy";
 import { useSearchParams } from "react-router-dom";
 import Filters from "./Filters";
+import Toast from "./Toast";
 // ambience
 export default function CityList() {
-  const { cities, isLoading } = useCities();
+  const { cities, isLoading, hasCityCreated } = useCities();
+  console.log(hasCityCreated);
+
   const [isOperationsOpen, setIsOperationsOpen] = useState(null);
   const [searchParams] = useSearchParams();
   const [filter, setFilter] = useState("all");
-  console.log(filter);
+  // console.log(filter);
   const sortedValue = searchParams.get("sortBy") || "date-asc";
   let sortedCities;
 
@@ -25,7 +28,7 @@ export default function CityList() {
 
   if (!sortedValue) sortedCities = sortedCities;
   const [field, direction] = sortedValue.split("-");
-  console.log(field, direction);
+  // console.log(field, direction);
 
   if (sortedValue) {
     const modifier = direction === "asc" ? 1 : -1;
@@ -37,18 +40,19 @@ export default function CityList() {
 
     if (field !== "date") {
       sortedCities = sortedCities.sort((a, b) => {
-        console.log(a[field]);
+        // console.log(a[field]);
         return (a[field] - b[field]) * modifier;
       });
     }
   }
 
-  console.log(sortedCities);
-  console.log(cities);
+  // console.log(sortedCities);
+  // console.log(cities);
   if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.cityList}>
+      {hasCityCreated && <Toast />}
       <div className={styles.operations}>
         <Filters
           onFilter={setFilter}
@@ -78,14 +82,16 @@ export default function CityList() {
           value={sortedValue}
         />
       </div>
-      {sortedCities.map((city) => (
-        <CityItem
-          key={city.id}
-          city={city}
-          isOperationsOpen={isOperationsOpen}
-          onOperations={setIsOperationsOpen}
-        />
-      ))}
+      <div className={styles.cities}>
+        {sortedCities.map((city) => (
+          <CityItem
+            key={city.id}
+            city={city}
+            isOperationsOpen={isOperationsOpen}
+            onOperations={setIsOperationsOpen}
+          />
+        ))}
+      </div>
     </div>
   );
 }

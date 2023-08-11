@@ -10,7 +10,6 @@ import Button from "./Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCities } from "../contexts/CitiesContext";
 import InputRow from "./InputRow";
-import Toast from "./Toast";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -25,8 +24,7 @@ function Form() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const { isLoading, createUpdateCity, cityToUpdate, setHasCityCreated } =
-    useCities();
+  const { isLoading, createUpdateCity, cityToUpdate } = useCities();
 
   const isUpdateSession = Boolean(cityToUpdate.id);
 
@@ -74,7 +72,7 @@ function Form() {
 
     console.log(newCity);
     await createUpdateCity(newCity);
-    setHasCityCreated(true);
+
     navigate("/app/cities");
   }
 
@@ -106,21 +104,32 @@ function Form() {
       className={`${styles.form} ${isLoading ? styles.loading : ""}`}
       onSubmit={submitHandler}
     >
-      <InputRow
-        htmlFor={"cityName"}
-        onChange={setCityName}
-        value={isUpdateSession ? cityToUpdate.cityName : cityName}
-        textLabel={"City name"}
-      >
+      <div className={styles.row}>
+        <label htmlFor="cityName">City name</label>
+        <input
+          id="cityName"
+          onChange={(e) => {
+            setCityName(e.target.value);
+          }}
+          defaultValue={isUpdateSession ? cityToUpdate.cityName : cityName}
+        />
         <span className={styles.flag}>{emoji}</span>
-      </InputRow>
+      </div>
 
-      <InputRow
-        htmlFor={"restaurantName"}
-        onChange={setRestaurantName}
-        textLabel={"Restaurant Name"}
-        value={isUpdateSession ? cityToUpdate.restaurantName : restaurantName}
-      />
+      <div className={styles.row}>
+        <label htmlFor="restaurantName">Restaurant name</label>
+        <input
+          id="restaurantName"
+          onChange={(e) => {
+            setRestaurantName(e.target.value);
+          }}
+          // defaultValue because if we provide just "value" property then when we write on input form then that writing words do not shows on the screen but form will be updated, but in the case of defaultvalue writing to the input form will be visible instantly as well as form update also just works fine.
+          defaultValue={
+            isUpdateSession ? cityToUpdate.restaurantName : restaurantName
+          }
+        />
+      </div>
+
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
 
@@ -137,41 +146,62 @@ function Form() {
         />
       </div>
 
-      <InputRow
-        htmlFor={"speciality"}
-        onChange={setSpeciality}
-        textLabel={"Speciality"}
-        value={isUpdateSession ? cityToUpdate.speciality : speciality}
-      />
+      <div className={styles.row}>
+        <label htmlFor="speciality">Speciality</label>
+        <input
+          id="speciality"
+          onChange={(e) => {
+            setSpeciality(e.target.value);
+          }}
+          defaultValue={isUpdateSession ? cityToUpdate.speciality : speciality}
+        />
+      </div>
 
-      <InputRow
-        htmlFor={"favouriteDishes"}
-        onChange={setFavouriteDishes}
-        textLabel={"Favourite Dishes"}
-        value={isUpdateSession ? cityToUpdate.favouriteDishes : favouriteDishes}
-      />
+      <div className={styles.row}>
+        <label htmlFor="favouriteDishes">Favourite Dishes</label>
+        <input
+          id="favouriteDishes"
+          onChange={(e) => {
+            setFavouriteDishes(e.target.value);
+          }}
+          defaultValue={
+            isUpdateSession ? cityToUpdate.favouriteDishes : favouriteDishes
+          }
+        />
+      </div>
 
-      <InputRow
-        htmlFor={"rating"}
-        onChange={setRating}
-        textLabel={"Your Rating"}
-        value={isUpdateSession ? cityToUpdate.rating : rating}
-      />
+      <div className={styles.row}>
+        <label htmlFor="rating">Your Rating</label>
+        <input
+          id="rating"
+          onChange={(e) => {
+            setRating(e.target.value);
+          }}
+          defaultValue={isUpdateSession ? cityToUpdate.rating : rating}
+        />
+      </div>
 
-      <InputRow
-        htmlFor={"expense"}
-        onChange={setExpense}
-        textLabel={"Total expense"}
-        value={isUpdateSession ? cityToUpdate.expense : expense}
-        isTransformToNum={true}
-      />
+      <div className={styles.row}>
+        <label htmlFor="expense">Total expense</label>
+        <input
+          id="expense"
+          onChange={(e) => {
+            setExpense(Number(e.target.value));
+          }}
+          defaultValue={isUpdateSession ? cityToUpdate.expense : expense}
+        />
+      </div>
 
-      <InputRow
-        htmlFor={"notes"}
-        onChange={setNotes}
-        textLabel={`Notes about your trip to ${cityName}`}
-        value={isUpdateSession ? cityToUpdate.notes : notes}
-      />
+      <div className={styles.row}>
+        <label htmlFor="notes">Notes about your trip to {cityName}</label>
+        <textarea
+          id="notes"
+          onChange={(e) => {
+            setNotes(e.target.value);
+          }}
+          defaultValue={isUpdateSession ? cityToUpdate.notes : notes}
+        />
+      </div>
 
       <div className={styles.checked}>
         <input
@@ -193,26 +223,3 @@ function Form() {
 }
 
 export default Form;
-
-/**
- 
- Important Projects in terms of various groups 
-
- * Social blogging app (medium clone)
- * Task management app (trello clone)
- * Q&A platform (stackoverflow clone)
- * Social media platform (twitter clone)
- * E-commerce platform (amazon clone)
- * Booking app (airbnb clone)
- * Personal finance app (mint clone)
- * Messaging app (whatsapp clone)
-
-*/
-
-// The code you write makes you a programmer. The code you delete makes you a good one. The code you don't have to write makes you a great one.
-
-// If you can get today’s work done today, but you do it in such a way that you can’t possibly get tomorrow’s work done tomorrow, then you lose.
-
-// The purpose of software engineering is to control complexity, not to create it.
-
-// Simplicity is prerequisite for reliability.

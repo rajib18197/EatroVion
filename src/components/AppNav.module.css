@@ -1,6 +1,6 @@
 .nav {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  /* margin-top: 2rem; */
+  /* margin-bottom: 2rem; */
 }
 
 .nav ul {
@@ -25,6 +25,7 @@
 /* CSS Modules feature */
 .nav a:global(.active) {
   background-color: rgb(57, 19, 194);
+  background-color: rgb(15, 8, 39);
   color: white;
   border-radius: 3px;
 }

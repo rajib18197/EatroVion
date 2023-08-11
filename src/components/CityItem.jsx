@@ -14,7 +14,7 @@ export default function CityItem({ city, isOperationsOpen, onOperations }) {
   // const [isOperationsOpen, setIsOperationsOpen] = useState(false);
 
   const navigate = useNavigate();
-  const { currentCity, removeCity } = useCities();
+  const { currentCity } = useCities();
 
   return (
     <ul>
@@ -60,9 +60,7 @@ export default function CityItem({ city, isOperationsOpen, onOperations }) {
             >
               ⫶
             </button>
-            {isOperationsOpen === city.id && (
-              <CitiesOperations city={city} removeCity={removeCity} />
-            )}
+            {isOperationsOpen === city.id && <CitiesOperations city={city} />}
           </div>
         </Link>
       </li>

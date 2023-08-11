@@ -1,0 +1,10 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.row input {
+  border: 2px solid var(--color-grey-dark-3);
+}

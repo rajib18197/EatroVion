@@ -1,32 +1,6 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "PT",
-      "restaurantName": "Redux Villa",
-      "favouriteDishes": [
-        "Pizza",
-        " Garlic",
-        " pizza"
-      ],
-      "speciality": "Homemade pizza Barbecue",
-      "contact": {
-        "phone": 88123461,
-        "email": "pizza.co@gmail.com"
-      },
-      "rating": "4.9",
-      "expense": 1150,
-      "memorable": true,
-      "date": "2023-07-14T18:00:00.000Z",
-      "notes": "Amazing summer with family and foods are very heathy and fresh",
-      "position": {
-        "lat": "38.727881642324164",
-        "lng": "-9.140900099907554"
-      },
-      "id": 98443197
-    },
-    {
       "cityName": "Berlin",
       "country": "Germany",
       "emoji": "DE",
@@ -101,6 +75,31 @@
         "lng": "-3.7245368957519536"
       },
       "id": 98443201
+    },
+    {
+      "cityName": "Madrid",
+      "country": "Spain",
+      "emoji": "ES",
+      "restaurantName": "JS Pizza palace",
+      "favouriteDishes": [
+        "Pizza",
+        " Garlic",
+        " pizza"
+      ],
+      "speciality": "pizza burger",
+      "contact": {
+        "phone": 88123461,
+        "email": "pizza.co@gmail.com"
+      },
+      "rating": "5.0",
+      "expense": 780,
+      "date": "2023-06-07T18:00:00.000Z",
+      "notes": "amazing restaurant and food are also delicious",
+      "position": {
+        "lat": "40.5027052715648",
+        "lng": "-3.6689186096191406"
+      },
+      "id": 98443202
     }
   ]
 }

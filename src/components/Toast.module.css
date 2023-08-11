@@ -1,0 +1,32 @@
+.toast {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-10%, -50%);
+  z-index: 200;
+  padding: 1rem 3rem;
+  background-color: white;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  color: #121212;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.toast button {
+  font-size: 3rem;
+  border: none;
+  outline: none;
+  color: red;
+  background: none;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.toast button:hover {
+  color: #121212;
+}

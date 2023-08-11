@@ -10,6 +10,7 @@ function CitiesProvider({ children }) {
   const [cityToUpdate, setCityToUpdate] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [hasCityCreated, setHasCityCreated] = useState(false);
 
   // const isFormUpdated = Object.keys(formData).length > 0;
   // console.log(isFormUpdated);
@@ -131,6 +132,8 @@ function CitiesProvider({ children }) {
         setIsLoading,
         createUpdateCity,
         removeCity,
+        hasCityCreated,
+        setHasCityCreated,
       }}
     >
       {children}
