@@ -70,7 +70,7 @@ function reducer(state, action) {
   }
 }
 
-const BASE_URL = "http://localhost:9000";
+const BASE_URL = "https://restaurantlistings.onrender.com";
 
 function CitiesProvider({ children }) {
   const [
