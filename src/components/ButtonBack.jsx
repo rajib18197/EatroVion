@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useCities } from "../contexts/CitiesContext";
 
 export default function ButtonBack() {
-  const { setCityToUpdate } = useCities();
+  const { dispatch } = useCities();
   const navigate = useNavigate();
 
   return (
@@ -11,7 +11,7 @@ export default function ButtonBack() {
       type="back"
       onClick={(e) => {
         e.preventDefault();
-        setCityToUpdate({});
+        // setCityToUpdate({});
         navigate(-1);
       }}
     >

@@ -1,16 +1,17 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 import "react-datepicker/dist/react-datepicker.css";
-
 import styles from "./Form.module.css";
-import { useEffect, useState } from "react";
+
 import DatePicker from "react-datepicker";
+import { useEffect, useState } from "react";
 
 import ButtonBack from "./ButtonBack";
 import Button from "./Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCities } from "../contexts/CitiesContext";
 import InputRow from "./InputRow";
-import Toast from "./Toast";
+import Message from "./Message";
+import Spinner from "./Spinner";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -19,16 +20,19 @@ export function convertToEmoji(countryCode) {
     .map((char) => 127397 + char.charCodeAt());
   return String.fromCodePoint(...codePoints);
 }
+
 const url = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 function Form() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const { isLoading, createUpdateCity, cityToUpdate, setHasCityCreated } =
-    useCities();
+  const { isLoading, createUpdateCity, cityToUpdate } = useCities();
 
   const isUpdateSession = Boolean(cityToUpdate.id);
+
+  const [isLoadingGeoCoding, setIsLoadingGeoCoding] = useState(false);
+  const [geoCodingError, setGeoCodingError] = useState("");
 
   const [cityName, setCityName] = useState("");
   const [restaurantName, setRestaurantName] = useState("");
@@ -36,7 +40,7 @@ function Form() {
   const [date, setDate] = useState(null);
   const [speciality, setSpeciality] = useState("");
   const [rating, setRating] = useState("");
-  const [memorable, setMemorable] = useState(false);
+  const [memorable, setMemorable] = useState("");
   const [favouriteDishes, setFavouriteDishes] = useState("");
   const [expense, setExpense] = useState(0);
   const [notes, setNotes] = useState("");
@@ -45,12 +49,12 @@ function Form() {
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
 
-  console.log(isUpdateSession);
+  // console.log(isUpdateSession);
 
   async function submitHandler(e) {
     e.preventDefault();
     if (!cityName && !isUpdateSession) return;
-
+    console.log(memorable);
     const newCity = {
       cityName: cityName || cityToUpdate.cityName,
       country: country || cityToUpdate.country,
@@ -66,7 +70,7 @@ function Form() {
       },
       rating: rating || cityToUpdate.rating,
       expense: expense || cityToUpdate.expense,
-      memorable: memorable || cityToUpdate.memorable,
+      memorable: memorable !== "" ? memorable : cityToUpdate.memorable,
       date: date || cityToUpdate.date,
       notes: notes || cityToUpdate.notes,
       position: { lat, lng },
@@ -74,23 +78,35 @@ function Form() {
 
     console.log(newCity);
     await createUpdateCity(newCity);
-    setHasCityCreated(true);
+    // setHasCityCreated(true);
     navigate("/app/cities");
   }
 
   useEffect(
     function () {
       if (isUpdateSession) return;
+
       async function getCityDetails() {
         try {
+          setIsLoadingGeoCoding(true);
           const res = await fetch(`${url}?latitude=${lat}&longitude=${lng}`);
           const data = await res.json();
           console.log(data);
+
+          if (!data.countryCode) {
+            throw new Error(
+              "That does not seem to be a city. Click somewhere else"
+            );
+          }
+
           setCityName(data.city);
           setEmoji(data.countryCode);
           setCountry(data.countryName);
         } catch (err) {
           console.error(err);
+          setGeoCodingError(err.message);
+        } finally {
+          setIsLoadingGeoCoding(false);
         }
       }
 
@@ -99,7 +115,14 @@ function Form() {
     [lat, lng]
   );
 
-  console.log(cityToUpdate);
+  console.log(cityToUpdate, isUpdateSession);
+
+  if (isLoadingGeoCoding) return <Spinner />;
+
+  if (!lat && !lng)
+    return <Message message={"Start by clicking somewhere on the map"} />;
+
+  if (geoCodingError) return <Message message={geoCodingError} />;
 
   return (
     <form
@@ -179,7 +202,14 @@ function Form() {
           name=""
           id="memorable"
           defaultChecked={isUpdateSession ? cityToUpdate.memorable : memorable}
-          onChange={(e) => setMemorable((memorable) => !memorable)}
+          onChange={(e) => {
+            if (isUpdateSession) {
+              console.log(cityToUpdate.memorable);
+              setMemorable(cityToUpdate.memorable ? false : true);
+              return;
+            }
+            setMemorable((memorable) => !memorable);
+          }}
         />
         <label htmlFor="memorable">Mind blowing experience</label>
       </div>

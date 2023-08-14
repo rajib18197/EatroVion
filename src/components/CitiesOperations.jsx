@@ -7,7 +7,7 @@ import ConfirmDelete from "./ConfirmDelete";
 
 export default function CitiesOperations({ city }) {
   const navigate = useNavigate();
-  const { setCityToUpdate } = useCities();
+  const { dispatch } = useCities();
 
   return (
     <div className={styles.opeartions}>
@@ -15,7 +15,7 @@ export default function CitiesOperations({ city }) {
         type={"primary"}
         onClick={(e) => {
           e.preventDefault();
-          setCityToUpdate({ ...city });
+          dispatch({ type: "city/update", payload: city });
           navigate(
             `/app/form?lat=${city.position.lat}&lng=${city.position.lng}`
           );

@@ -39,8 +39,8 @@
         "phone": 88123461,
         "email": "pizza.co@gmail.com"
       },
-      "rating": "4.5",
-      "expense": 600,
+      "rating": "4.6",
+      "expense": 900,
       "memorable": true,
       "date": "2023-06-06T12:10:15.000Z",
       "notes": "nice and healthy food and environment",
@@ -65,8 +65,8 @@
         "phone": 88123461,
         "email": "pizza.co@gmail.com"
       },
-      "rating": "4.7",
-      "expense": 650,
+      "rating": "4.8",
+      "expense": 850,
       "memorable": true,
       "date": "2023-06-09T18:00:00.000Z",
       "notes": "extraordinary place to go. fresh and healthy food.",
@@ -77,29 +77,30 @@
       "id": 98443201
     },
     {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "ES",
-      "restaurantName": "JS Pizza palace",
+      "cityName": "Berlin",
+      "country": "Germany",
+      "emoji": "DE",
+      "restaurantName": "JS Pizza advice",
       "favouriteDishes": [
-        "Pizza",
-        " Garlic",
-        " pizza"
+        "avocado",
+        " cheese",
+        " aspargus"
       ],
-      "speciality": "pizza burger",
+      "speciality": "Garlic Bread pizza",
       "contact": {
         "phone": 88123461,
         "email": "pizza.co@gmail.com"
       },
-      "rating": "5.0",
-      "expense": 780,
-      "date": "2023-06-07T18:00:00.000Z",
-      "notes": "amazing restaurant and food are also delicious",
+      "rating": "4.8",
+      "expense": 870,
+      "memorable": false,
+      "date": "2023-07-25T18:00:00.000Z",
+      "notes": "amazing",
       "position": {
-        "lat": "40.5027052715648",
-        "lng": "-3.6689186096191406"
+        "lat": "52.53011214871808",
+        "lng": "13.410873413085938"
       },
-      "id": 98443202
+      "id": 98443204
     }
   ]
 }
