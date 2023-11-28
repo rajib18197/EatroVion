@@ -44,7 +44,7 @@ export async function signup(provider) {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
     options: {
-      redirectTo: "http://localhost:5173/app",
+      redirectTo: "https://eatro-vion.vercel.app/app",
     },
   });
 
