@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
 import styles from "./User.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {

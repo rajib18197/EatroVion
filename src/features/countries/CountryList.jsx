@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { useCities } from "../../contexts/CitiesContext";
 import CountryItem from "./CountryItem";
 import styles from "./CountryList.module.css";
 import { getCitiesState } from "../cities/citiesSlice";

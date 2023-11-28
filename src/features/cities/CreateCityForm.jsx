@@ -3,22 +3,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../ui/Form.module.css";
 
 import DatePicker from "react-datepicker";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import ButtonBack from "../../ui/ButtonBack";
 import Button from "../../ui/Button";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useCities } from "../../contexts/CitiesContext";
+import { useNavigate } from "react-router-dom";
 import InputRow from "../../ui/InputRow";
 import Message from "../../ui/Message";
 import Spinner from "../../ui/Spinner";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  createNewCity,
-  requestStatus,
-  selectCityToUpdate,
-  updateCity,
-} from "./citiesSlice";
+import { createNewCity, requestStatus, updateCity } from "./citiesSlice";
 import {
   createCity,
   updateCity as updateCityApi,

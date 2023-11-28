@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
-import { useCities } from "../contexts/CitiesContext";
 
 export default function ButtonBack() {
   const navigate = useNavigate();

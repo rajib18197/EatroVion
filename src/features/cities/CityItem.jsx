@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./CityItem.module.css";
-import { useCities } from "../../contexts/CitiesContext";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteCity,
@@ -77,7 +76,7 @@ export default function CityItem({ city }) {
           }`}
           to={`${city.id}?lat=${lat}&lng=${lng}`}
         >
-          <img src="/hero.jpg" alt="image-1" className={styles.image} />
+          {/* <img src="/hero.jpg" alt="image-1" className={styles.image} /> */}
           <div className={styles.desc}>
             <h2 className={styles.name}>
               {restaurantName}, {cityName}

@@ -1,12 +1,10 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
 import PageNav from "../../ui/PageNav";
-// import { useAuth } from "../contexts/AuthContext";
-import { useAuth } from "../../contexts/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { authState, getAuthRequestStatus, loginUser } from "./authSlice";
+import { getAuthRequestStatus, loginUser } from "./authSlice";
 import { signInWithPassword } from "./authApi";
 import AuthProvider from "./AuthProvider";
 import { useUser } from "../../hooks/useUser";

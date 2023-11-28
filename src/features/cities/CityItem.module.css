@@ -3,6 +3,7 @@
 .cityItem:visited {
   display: grid;
   grid-template-columns: min-content 1fr 0.7fr min-content;
+  grid-template-columns: 1fr 1fr min-content;
   gap: 1.6rem;
   align-items: center;
 
@@ -13,7 +14,7 @@
   border-left: 5px solid rgba(57, 19, 194, 0.8);
   border-left: 5px solid rgba(83, 36, 250, 0.8);
   border-left: 5px solid #4923f0;
-  border-left: 5px solid rgb(210, 112, 141);
+  border-left: 5px solid rgb(168, 137, 255);
   box-shadow: 0 4rem 4rem rgba(216, 216, 216, 0.2);
   box-shadow: rgba(184, 184, 201, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
@@ -28,8 +29,8 @@
 }
 
 .cityItem.cityItem--active {
-  border: 2px solid rgb(210, 112, 141);
-  border-left: 5px solid rgb(210, 112, 141);
+  border: 2px solid rgb(168, 137, 255);
+  border-left: 5px solid rgb(168, 137, 255);
 }
 
 .emoji {

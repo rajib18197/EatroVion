@@ -1,15 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Login.module.css";
-// import PageNav from "../ui/PageNav";
 import PageNav from "../../ui/PageNav";
-// import { useAuth } from "../contexts/AuthContext";
-import { useAuth } from "../../contexts/AuthContext";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
-import { signup as signUpApi, signout, signupWithPassword } from "./authApi";
-import supabase from "../../services/supabase";
+import { signup as signUpApi, signupWithPassword } from "./authApi";
 
-import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthRequestStatus, signUpUser } from "./authSlice";
 import AuthProvider from "./AuthProvider";

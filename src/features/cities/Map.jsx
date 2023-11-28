@@ -9,7 +9,6 @@ import {
 import styles from "./Map.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useCities } from "../../contexts/CitiesContext";
 import Button from "../../ui/Button";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useDispatch, useSelector } from "react-redux";
@@ -124,13 +123,13 @@ function ChangeCenter({ position }) {
 
 function DetectClick() {
   const navigate = useNavigate();
-  const { cityToUpdate, dispatch } = useCities();
+  // const { cityToUpdate, dispatch } = useCities();
 
   useMapEvent({
     click: (e) => {
-      if (Object.keys(cityToUpdate).length > 0) {
-        dispatch({ type: "city/cancelUpdate" });
-      }
+      // if (Object.keys(cityToUpdate).length > 0) {
+      //   dispatch({ type: "city/cancelUpdate" });
+      // }
 
       navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
     },
