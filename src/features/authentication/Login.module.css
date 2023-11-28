@@ -1,0 +1,81 @@
+.login {
+  background-color: hsl(210deg, 30%, 8%);
+  background-image: linear-gradient(
+      120deg,
+      rgba(57, 19, 194, 0.8),
+      /* rgba(223, 57, 178, 0.8) */ rgba(147, 35, 221, 0.8)
+    ),
+    url(/hero.jpg);
+  background-size: cover;
+
+  height: 100vh;
+}
+/* .sectionForm {
+  height: calc(100vh - 7rem);
+} */
+
+.btns {
+  display: flex;
+  gap: 2rem;
+}
+
+.formContainer {
+  width: 75rem;
+  margin: 8rem auto;
+  background-color: hsl(210deg, 22%, 15%);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem;
+  gap: 2rem;
+  border-radius: 7px;
+}
+.form {
+  /* background-color: hsl(210, 29%, 16%); */
+  /* background-color: hsl(210deg, 22%, 15%); */
+  /* color: white; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  /* Different from other form */
+  /* width: 75rem; */
+  /* margin: 8rem auto; */
+}
+
+.authProviders {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.authProviders > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: #121212;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.authProviders > button svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: hsl(213, 100%, 98%);
+}
+
+.row input {
+  background-color: white;
+}

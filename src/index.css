@@ -1,6 +1,7 @@
 /* Taken from getting started guide at: https://leafletjs.com/examples/quick-start/ */
 @import "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css";
-@import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap";
+/* @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,900;1,6..12,600&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
 
 /* These CSS variables are global, so they are available in all CSS modules */
 /****************** Color Properties ******************/
@@ -37,7 +38,7 @@ html {
 }
 
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: "Lato", sans-serif;
   color: var(--color-light--2);
   font-weight: 400;
   line-height: 1.6;

@@ -1,4 +1,4 @@
-import PageNav from "../components/PageNav";
+import PageNav from "../ui/PageNav";
 import styles from "./Product.module.css";
 
 export default function Product() {
@@ -11,7 +11,7 @@ export default function Product() {
           alt="person with dog overlooking mountain with sunset"
         />
         <div>
-          <h2>About WorldWide.</h2>
+          <h2>About EatroVion.</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo est
             dicta illum vero culpa cum quaerat architecto sapiente eius non

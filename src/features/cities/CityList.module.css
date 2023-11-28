@@ -1,0 +1,34 @@
+.cityList {
+  width: 100%;
+  height: 65vh;
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 4px;
+}
+
+.cities {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  overflow-y: scroll;
+}
+
+.cities::-webkit-scrollbar {
+  width: 10px;
+}
+.cities::-webkit-scrollbar-track {
+  background-color: rgb(255, 0, 0);
+}
+.cities::-webkit-scrollbar-thumb {
+  background-color: rgb(15, 7, 61);
+  box-shadow: inset 0 0 6px rgba(21, 8, 77, 0.925);
+}
+
+.operations {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

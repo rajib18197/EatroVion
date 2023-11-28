@@ -84,7 +84,7 @@ function CitiesProvider({ children }) {
       try {
         const response = await fetch(`${BASE_URL}/cities`);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
 
         dispatch({ type: "cities/loaded", payload: data });
       } catch (err) {
@@ -190,3 +190,23 @@ function useCities() {
 }
 
 export { CitiesProvider, useCities };
+
+// export const fetchCity = createAsyncThunk(
+//   "cities/fetchCity",
+//   async ({ requestName, requestFn, ...rest }, { dispatch }) => {
+//     console.log(requestName);
+//     dispatch(requestStarted(requestName));
+//     try {
+//       const data = await requestFn({ ...rest });
+//       dispatch(requestSuccess(requestName));
+//       return data;
+//     } catch (err) {
+//       dispatch(requestFailed(requestName));
+//     }
+//   }
+// );
+
+// 💨
+// Thanks so much for giving my newsletter a chance. I'm super excited to welcome you aboard!
+
+// The goal of artificial intelligence is to replace boring repetitive jobs, so humans can concentrate on doing what they do best: thinking, creating, and dreaming up new ideas

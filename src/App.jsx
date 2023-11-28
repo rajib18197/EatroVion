@@ -3,16 +3,19 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
-import AppLayout from "./pages/AppLayout";
-import CityList from "./components/Citylist";
+import AppLayout from "./ui/AppLayout";
 import { CitiesProvider } from "./contexts/CitiesContext";
-import CountryList from "./components/CountryList";
-import City from "./components/City";
-import Form from "./components/Form";
-import Signup from "./pages/Signup";
+import CountryList from "./features/countries/CountryList";
+import CityDetails from "./features/cityDetails/CityDetails";
+
+import Signup from "./features/authentication/Signup";
+import Login from "./features/authentication/Login";
 import { AuthProvider } from "./contexts/AuthContext";
-import Login from "./pages/Login";
-import ProtectedRoute from "./pages/ProtectedRoute";
+import ProtectedRoute from "./ui/ProtectedRoute";
+import Cities from "./pages/Cities";
+import CreateCityForm from "./features/cities/CreateCityForm";
+import UpdateCity from "./pages/UpdateCity";
+import Stats from "./features/stats/Stats";
 
 export default function App() {
   return (
@@ -34,10 +37,12 @@ export default function App() {
               }
             >
               <Route index element={<Navigate to="cities" replace />} />
-              <Route path="cities" element={<CityList />} />
+              <Route path="cities" element={<Cities />} />
               <Route path="countries" element={<CountryList />} />
-              <Route path="cities/:cityId" element={<City />} />
-              <Route path="form" element={<Form />} />
+              <Route path="cities/:cityId" element={<CityDetails />} />
+              <Route path="cities/:id/update" element={<UpdateCity />} />
+              <Route path="form" element={<CreateCityForm />} />
+              <Route path="stats" element={<Stats />} />
             </Route>
           </Routes>
         </BrowserRouter>

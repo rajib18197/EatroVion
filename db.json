@@ -1,0 +1,56 @@
+{
+  "students": [
+    {
+      "fullName": "Emily Davis",
+      "id": 1
+    },
+    {
+      "fullName": "Olivia Taylor",
+      "id": 3
+    }
+  ],
+  "subjects": [
+    {
+      "id": 1,
+      "name": "Physics",
+      "studentId": 1
+    },
+    {
+      "id": 2,
+      "name": "Math",
+      "studentId": 3
+    },
+    {
+      "name": "Chemistry",
+      "studentId": 1,
+      "id": 4
+    },
+    {
+      "name": "Physics",
+      "studentId": 3,
+      "id": 5
+    },
+    {
+      "name": "Physics",
+      "studentId": 1,
+      "id": 6
+    }
+  ],
+  "books": [
+    {
+      "name": "The Definitive Guide-physics",
+      "id": 1,
+      "subjectId": 1
+    },
+    {
+      "name": "physics specialist",
+      "id": 2,
+      "subjectId": 1
+    },
+    {
+      "name": "Calculus-Math",
+      "id": 3,
+      "subjectId": 2
+    }
+  ]
+}

@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
-import PageNav from "../components/PageNav";
+import PageNav from "../ui/PageNav";
 import styles from "./Homepage.module.css";
-import { useAuth } from "../contexts/AuthContext";
+import { useUser } from "../hooks/useUser";
+import Spinner from "../ui/Spinner";
 
 export default function Homepage() {
-  const { currentUser } = useAuth();
+  const { isAuthenticated, user, inProgress } = useUser();
+  console.log(isAuthenticated, user, inProgress);
+  // if (inProgress) return <Spinner />;
+
   return (
     <header className={styles.showcase}>
       <PageNav />
@@ -19,7 +23,7 @@ export default function Homepage() {
           friends how you have wandered the world."
         </p>
         <Link
-          to={currentUser ? "login" : "signup"}
+          to={isAuthenticated ? "/app" : "login"}
           href="#"
           className={styles.showcaseLink}
         >

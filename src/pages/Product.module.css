@@ -30,11 +30,13 @@
   font-size: 4rem;
   line-height: 1.2;
   margin-bottom: 3rem;
+  color: white;
 }
 
 .product p {
   font-size: 1.6rem;
   margin-bottom: 2rem;
+  color: white;
 }
 
 .product section a {
