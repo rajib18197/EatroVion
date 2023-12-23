@@ -8,6 +8,7 @@ export function useGeoCoding({
   setCityName,
   setCountry,
   setEmoji,
+  setEnteredValues,
 }) {
   const [isLoadingGeoCoding, setIsLoadingGeoCoding] = useState(false);
   const [geoCodingError, setGeoCodingError] = useState("");
@@ -35,9 +36,16 @@ export function useGeoCoding({
             );
           }
 
-          setCityName(data.city);
-          setEmoji(data.countryCode);
-          setCountry(data.countryName);
+          // setCityName(data.city);
+          // setEmoji(data.countryCode);
+          // setCountry(data.countryName);
+
+          setEnteredValues((cur) => ({
+            ...cur,
+            cityName: data.city,
+            emoji: data.countryCode,
+            country: data.countryName,
+          }));
         } catch (err) {
           console.error(err);
           setGeoCodingError(err.message);

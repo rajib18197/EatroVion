@@ -2,23 +2,18 @@ import styles from "./InputRow.module.css";
 
 export default function InputRow({
   htmlFor,
-  onChange,
   textLabel,
   value,
+  error,
   children,
-  isTransformToNum = false,
+  ...others
 }) {
   return (
     <div className={styles.row}>
       <label htmlFor={htmlFor}>{textLabel}</label>
-      <input
-        id={htmlFor}
-        onChange={(e) => {
-          onChange(isTransformToNum ? Number(e.target.value) : e.target.value);
-        }}
-        value={value}
-      />
+      <input id={htmlFor} value={value} {...others} />
       {children}
+      {error && error}
     </div>
   );
 }

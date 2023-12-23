@@ -43,62 +43,27 @@ function CreateCityForm({ cityToUpdate = {} }) {
 
   const isUpdateSession = Boolean(cityToUpdate?.id);
 
-  const [enteredValues, setEnteredValues] = useState({
-    cityName: cityToUpdate.cityName || "",
-    restaurantName: cityToUpdate.restaurantName || "",
-    country: cityToUpdate.country || "",
-    date: cityToUpdate?.date ? new Date(cityToUpdate.date) : null,
-    speciality: cityToUpdate.speciality || "",
-    masterpiece: cityToUpdate.masterpiece || false,
-    expense: cityToUpdate.expense || 0,
-    notes: cityToUpdate.notes || "",
-    emoji: cityToUpdate.emoji || null,
-  });
-
-  const {
-    cityName,
-    restaurantName,
-    country,
-    date,
-    speciality,
-    masterpiece,
-    expense,
-    notes,
-    emoji,
-  } = enteredValues;
-
-  const [didEdit, setDidEdit] = useState({
-    cityName: false,
-    restaurantName: false,
-    date: false,
-    speciality: false,
-    expense: false,
-    notes: false,
-  });
-
-  const restaurantNameIsInvalid =
-    didEdit.restaurantName && restaurantName === "";
-
-  const dateIsInvalid = didEdit.date && date === null;
-  const specialityIsInvalid = didEdit.speciality && speciality === "";
-  const expenseIsInvalid = didEdit.expense && expense <= 0;
-  const notesIsInvalid = didEdit.notes && notes.length <= 20;
-
-  console.log(restaurantNameIsInvalid);
-
-  function handleBlur(identifier) {
-    setDidEdit((cur) => ({ ...cur, [identifier]: true }));
-  }
-
-  function handleChange(identifier, value) {
-    setEnteredValues((cur) => ({ ...cur, [identifier]: value }));
-
-    setDidEdit((cur) => ({ ...cur, [identifier]: false }));
-  }
+  const [cityName, setCityName] = useState(cityToUpdate.cityName || "");
+  const [restaurantName, setRestaurantName] = useState(
+    cityToUpdate.restaurantName || ""
+  );
+  const [country, setCountry] = useState(cityToUpdate.country || "");
+  const [date, setDate] = useState(
+    cityToUpdate.date ? new Date(cityToUpdate.date) : null
+  );
+  const [speciality, setSpeciality] = useState(cityToUpdate.speciality || "");
+  const [masterpiece, setMasterpiece] = useState(
+    cityToUpdate.masterpiece || false
+  );
+  const [expense, setExpense] = useState(cityToUpdate.expense || 0);
+  const [notes, setNotes] = useState(cityToUpdate.notes || "");
+  const [emoji, setEmoji] = useState(cityToUpdate.emoji);
 
   const { isLoadingGeoCoding, geoCodingError, lat, lng } = useGeoCoding({
     isUpdateSession,
-    setEnteredValues,
+    setCityName,
+    setCountry,
+    setEmoji,
   });
 
   async function submitHandler(e) {
@@ -166,21 +131,18 @@ function CreateCityForm({ cityToUpdate = {} }) {
     >
       <InputRow
         htmlFor={"cityName"}
-        textLabel={"City name"}
+        onChange={setCityName}
         value={cityName}
-        onChange={(e) => handleChange("cityName", e.target.value)}
-        onBlur={() => handleBlur("cityName")}
+        textLabel={"City name"}
       >
         <span className={styles.flag}>{emoji}</span>
       </InputRow>
 
       <InputRow
         htmlFor={"restaurantName"}
-        textLabel={"RestaurantName"}
+        onChange={setRestaurantName}
+        textLabel={"Restaurant Name"}
         value={restaurantName}
-        onChange={(e) => handleChange("restaurantName", e.target.value)}
-        onBlur={() => handleBlur("restaurantName")}
-        error={restaurantNameIsInvalid && "Restaurant Name must be included"}
       />
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
@@ -188,37 +150,32 @@ function CreateCityForm({ cityToUpdate = {} }) {
         <DatePicker
           id="date"
           selected={date}
-          onChange={(date) => handleChange("date", date)}
-          onBlur={() => handleBlur("date")}
-          error={dateIsInvalid && "Date must be included"}
+          onChange={(date) => {
+            setDate(date);
+          }}
         />
       </div>
 
       <InputRow
         htmlFor={"speciality"}
+        onChange={setSpeciality}
         textLabel={"Speciality"}
         value={speciality}
-        onChange={(e) => handleChange("speciality", e.target.value)}
-        onBlur={() => handleBlur("speciality")}
-        error={specialityIsInvalid && "Speciality must be included"}
       />
 
       <InputRow
         htmlFor={"expense"}
+        onChange={setExpense}
         textLabel={"Total expense"}
         value={expense}
-        onChange={(e) => handleChange("expense", Number(e.target.value))}
-        onBlur={() => handleBlur("expense")}
-        error={expenseIsInvalid && "Expense must be greater than 0"}
+        isTransformToNum={true}
       />
 
       <InputRow
         htmlFor={"notes"}
+        onChange={setNotes}
         textLabel={`Notes about your trip to ${cityName}`}
         value={notes}
-        onChange={(e) => handleChange("notes", e.target.value)}
-        onBlur={() => handleBlur("notes")}
-        error={notesIsInvalid && "Notes must be more than 20 chars"}
       />
 
       <div className={styles.checked}>
@@ -227,12 +184,9 @@ function CreateCityForm({ cityToUpdate = {} }) {
           name=""
           id="masterpiece"
           checked={masterpiece}
-          onChange={() =>
-            setEnteredValues((cur) => ({
-              ...cur,
-              masterpiece: !cur.masterpiece,
-            }))
-          }
+          onChange={() => {
+            setMasterpiece((masterpiece) => !masterpiece);
+          }}
         />
         <label htmlFor="memorable">Masterpiece</label>
       </div>

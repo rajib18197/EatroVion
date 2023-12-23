@@ -10,15 +10,19 @@ export default function AuthProvider() {
 
   return (
     <div className={styles.authProviders}>
-      <button onClick={() => handleSubmit("google")}>
-        <FaGoogle />
-      </button>
-      <button onClick={() => handleSubmit("facebook")}>
+      <div className={styles.auth}>
+        <button onClick={() => handleSubmit("google")}>
+          <FaGoogle />
+          Sign up with Google
+        </button>
+        {/* <h3>Sign up with Google</h3> */}
+      </div>
+      {/* <button onClick={() => handleSubmit("facebook")}>
         <FaFacebook />
       </button>
       <button onClick={() => handleSubmit("github")}>
         <FaGithub />
-      </button>
+      </button> */}
       {/* <button onClick={handleSigout}>Sign out</button> */}
     </div>
   );
