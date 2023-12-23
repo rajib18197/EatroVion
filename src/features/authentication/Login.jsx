@@ -72,7 +72,7 @@ export default function Login() {
           </div>
         </form>
 
-        <AuthProvider />
+        <AuthProvider type="Login" />
       </div>
     </main>
   );
