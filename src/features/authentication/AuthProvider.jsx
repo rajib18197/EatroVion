@@ -12,7 +12,7 @@ export default function AuthProvider({ type = "Sign up" }) {
       <div className={styles.auth}>
         <button onClick={() => handleSubmit("google")}>
           <FaGoogle />
-          {type} up with Google
+          {type} with Google
         </button>
       </div>
     </div>
